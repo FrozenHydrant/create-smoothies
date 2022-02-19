@@ -1,0 +1,15 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "tag": "forge:crops/beetroot",
+	  "count": 3
+    }
+  ],
+  "results": [
+    {
+      "fluid": "createsmoothies:beet_juice_fluid",
+	  "amount": 500
+    }
+  ]
+}
