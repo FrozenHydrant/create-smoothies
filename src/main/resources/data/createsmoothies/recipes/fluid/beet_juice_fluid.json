@@ -2,8 +2,13 @@
   "type": "create:compacting",
   "ingredients": [
     {
-      "tag": "forge:crops/beetroot",
-	  "count": 3
+      "tag": "forge:crops/beetroot"
+    },
+	{
+      "tag": "forge:crops/beetroot"
+    },
+	{
+      "tag": "forge:crops/beetroot"
     }
   ],
   "results": [

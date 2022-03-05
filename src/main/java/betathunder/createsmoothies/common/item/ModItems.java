@@ -53,6 +53,19 @@ public class ModItems {
 	public static final RegistryObject<Item> BEET_JUICE = registerItem("beet_juice",
 			() -> new HoneyBottleItem(new Item.Properties().tab(ItemGroup.TAB_FOOD)
 					.food(new Food.Builder().nutrition(3).saturationMod(0.7f).build())));
+	
+	public static final RegistryObject<Item> PICKLE_JUICE = registerItem("pickle_juice",
+			() -> new HoneyBottleItem(new Item.Properties().tab(ItemGroup.TAB_FOOD)
+					.food(new Food.Builder().nutrition(1).saturationMod(0.5f).build())));
+	
+	public static final RegistryObject<Item> HONEY_PICKLE_SHAKE = registerItem("honey_pickle_shake",
+			() -> new HoneyBottleItem(new Item.Properties().tab(ItemGroup.TAB_FOOD)
+					.food(new Food.Builder().nutrition(1).saturationMod(0.5f).build())));
+	
+	public static final RegistryObject<Item> MINTY_TWIST = registerItem("minty_twist",
+			() -> new HoneyBottleItem(new Item.Properties().tab(ItemGroup.TAB_FOOD)
+					.food(new Food.Builder().nutrition(1).saturationMod(0.5f).build())));
+
 
 	public static RegistryObject<Item> registerItem(String name, Supplier<Item> item) {
 		return ITEMS.register(name, item);

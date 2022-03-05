@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "createsmoothies:items/honey_pickle_shake"
+  }
+}
