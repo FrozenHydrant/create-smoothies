@@ -2,14 +2,15 @@
   "type": "create:mixing",
   "ingredients": [
     {
-      "tag": "forge:crops/beetroot"
-    },
-    {
-      "item": "minecraft:apple"
+      "fluid": "createsmoothies:beet_juice_fluid",
+      "amount": 250
     },
     {
       "fluidTag": "forge:milk",
       "amount": 250
+    },
+    {
+      "item": "minecraft:apple"
     }
   ],
   "results": [

@@ -6,6 +6,7 @@ bin
 .classpath
 .project
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 # idea
 out
@@ -15,8 +16,8 @@ out
 .idea
 
 # gradle
-build
 .gradle
+build
 
 # other
 eclipse

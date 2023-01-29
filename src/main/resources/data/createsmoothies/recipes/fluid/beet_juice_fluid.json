@@ -3,18 +3,12 @@
   "ingredients": [
     {
       "tag": "forge:crops/beetroot"
-    },
-	{
-      "tag": "forge:crops/beetroot"
-    },
-	{
-      "tag": "forge:crops/beetroot"
     }
   ],
   "results": [
     {
       "fluid": "createsmoothies:beet_juice_fluid",
-	  "amount": 500
+	  "amount": 250
     }
   ]
 }
