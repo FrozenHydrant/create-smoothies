@@ -4,10 +4,14 @@ import betathunder.createsmoothies.common.block.ModBlocks;
 import betathunder.createsmoothies.common.fluid.ModFluids;
 import betathunder.createsmoothies.common.item.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.fluid.Fluid;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -26,10 +30,10 @@ public class CreateSmoothies
     public CreateSmoothies() {
         // Register the setup method for modloading
     	
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.registerItems(modEventBus);
-        ModBlocks.registerBlocks(modEventBus);
         ModFluids.registerFluids(modEventBus);
+        ModBlocks.registerBlocks(modEventBus);
 		modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         modEventBus.addListener(this::enqueueIMC);
@@ -44,34 +48,35 @@ public class CreateSmoothies
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        //LOGGER.info("HELLO FROM PREINIT");
-        //LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-       // LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+        for (RegistryObject<Fluid> fluid: ModFluids.FLUIDS.getEntries()) {
+            RenderTypeLookup.setRenderLayer(fluid.get(), RenderType.translucent());
+        }
+
+        /*
+         This mod doesn't add any blocks other than fluid blocks, so they can all be translucent
+         */
+        for (RegistryObject<Block> fluidBlock: ModBlocks.BLOCKS.getEntries()) {
+            RenderTypeLookup.setRenderLayer(fluidBlock.get(), RenderType.translucent());
+        }
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        // some example code to dispatch IMC to another mod
-        //InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
     {
-        // some example code to receive and process InterModComms from other mods
-        //LOGGER.info("Got IMC {}", event.getIMCStream().
-        //        map(m->m.getMessageSupplier().get()).
-          //      collect(Collectors.toList()));
+
     }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-       // LOGGER.info("HELLO from server starting");
+
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -80,8 +85,7 @@ public class CreateSmoothies
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            //LOGGER.info("HELLO from Register Block");
+
         }
     }
 }
